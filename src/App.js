@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Container} from '@mui/material';
+import {Requests} from "./pages/Requests";
+import {NoContent} from "./pages/NoContent";
+import {UpdateRequest} from "./pages/UpdateRequest";
+import {Add} from "./pages/Add";
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Requests />} />
+          <Route path="/update/:id" element={<UpdateRequest />} />
+          <Route path="/add" element={<Add />} />
+          <Route path="*" element={<NoContent />} />
+        </Routes>
+      </BrowserRouter>
+     
+    </Container>
   );
 }
 
